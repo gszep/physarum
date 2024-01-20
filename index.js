@@ -73,8 +73,8 @@ let diffuse_decay = new ShaderMaterial({
     points: { value: null },
     decay: { value: 0.9 },
   },
-  vertexShader: require("./src/glsl/quad_vs.glsl"),
-  fragmentShader: require("./src/glsl/diffuse_decay_fs.glsl"),
+  vertexShader: require("./src/glsl/quad_vs.vert"),
+  fragmentShader: require("./src/glsl/diffuse_decay_fs.frag"),
 });
 let trails = new PingpongRenderTarget(w, h, diffuse_decay);
 
@@ -90,8 +90,8 @@ let update_agents = new ShaderMaterial({
     so: { value: 12 },
     ss: { value: 1.1 },
   },
-  vertexShader: require("./src/glsl/quad_vs.glsl"),
-  fragmentShader: require("./src/glsl/update_agents_fs.glsl"),
+  vertexShader: require("./src/glsl/quad_vs.vert"),
+  fragmentShader: require("./src/glsl/update_agents_fs.frag"),
 });
 let agents = new PingpongRenderTarget(size, size, update_agents, ptexdata);
 
@@ -100,8 +100,8 @@ let agents = new PingpongRenderTarget(size, size, update_agents, ptexdata);
 
 //renders the updated agents as red dots
 let render_agents = new ShaderMaterial({
-  vertexShader: require("./src/glsl/render_agents_vs.glsl"),
-  fragmentShader: require("./src/glsl/render_agents_fs.glsl"),
+  vertexShader: require("./src/glsl/render_agents_vs.vert"),
+  fragmentShader: require("./src/glsl/render_agents_fs.frag"),
 });
 let render = new RenderTarget(w, h, render_agents, pos, uvs);
 
@@ -115,8 +115,8 @@ let postprocess = new ShaderMaterial({
       value: null,
     },
   },
-  vertexShader: require("./src/glsl/quad_vs.glsl"),
-  fragmentShader: require("./src/glsl/postprocess_fs.glsl"),
+  vertexShader: require("./src/glsl/quad_vs.vert"),
+  fragmentShader: require("./src/glsl/postprocess_fs.frag"),
 });
 let postprocess_mesh = new Mesh(new PlaneBufferGeometry(), postprocess);
 postprocess_mesh.scale.set(w, h, 1);
