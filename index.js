@@ -22,9 +22,15 @@ import Controls from "./src/Controls";
 let w = window.innerWidth;
 let h = window.innerHeight;
 
+const canvas = document.createElement( 'canvas' );
+let context = canvas.getContext( 'webgl2', { antialias: true } )
+
 const renderer = new WebGLRenderer({
+  canvas: canvas,
+  context: context,
   alpha: true,
 });
+
 document.body.appendChild(renderer.domElement);
 renderer.setSize(w, h);
 const scene = new Scene();

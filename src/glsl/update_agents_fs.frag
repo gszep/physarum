@@ -1,14 +1,14 @@
+#version 300 es
+precision mediump float;
+
 uniform sampler2D input_texture;
 uniform sampler2D data;
-
-precision mediump float;
 uniform vec2 resolution;
 uniform float time;
 uniform float sa;
 uniform float ra;
 uniform float so;
 uniform float ss;
-
 
 const float PI  = 3.14159265358979323846264;// PI
 const float PI2 = PI * 2.;
@@ -20,14 +20,16 @@ float rand(in vec2 coordinate){
 }
 
 float getDataValue(vec2 uv){
-    return texture2D(data,fract( uv ) ).r;
+    return texture(data,fract( uv ) ).r;
 }
 
 float getTrailValue(vec2 uv){
-    return texture2D(data,fract(uv)).g;
+    return texture(data,fract(uv)).g;
 }
 
-varying vec2 vUv;
+in vec2 vUv;
+out vec4 fragColor;
+
 void main(){
     
     //converts degree to radians (should be done on the CPU)
@@ -41,7 +43,7 @@ void main(){
 
     //uv = input_texture.xy
     //where to sample in the data trail texture to get the agent's world position
-    vec4 src = texture2D(input_texture,vUv);
+    vec4 src = texture(input_texture,vUv);
     vec4 val = src;
     
     //agent's heading 
@@ -87,6 +89,6 @@ void main(){
     //converts the angle back to [0-1]
     val.z = ( angle / PI2 );
     
-    gl_FragColor = val;
+    fragColor = val;
 
 }
