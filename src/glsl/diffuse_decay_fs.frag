@@ -1,6 +1,7 @@
-
 uniform sampler2D points;
 uniform sampler2D input_texture;
+precision mediump float;
+
 uniform vec2 resolution;
 uniform float time;
 uniform float decay;

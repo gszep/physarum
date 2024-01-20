@@ -1,7 +1,7 @@
-
 uniform sampler2D input_texture;
 uniform sampler2D data;
 
+precision mediump float;
 uniform vec2 resolution;
 uniform float time;
 uniform float sa;
