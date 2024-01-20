@@ -15,7 +15,7 @@ module.exports = {
             exclude: /node_modules/,
         },
         {
-            test: /\.glsl$/,
+            test: /\.(glsl|vs|fs|vert|frag)$/,
             use: 'raw-loader'
         }],
     },
